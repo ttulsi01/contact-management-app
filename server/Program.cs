@@ -1,44 +1,73 @@
+using ContactManagerApi.Data;
+using ContactManagerApi.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Add services to the container
+builder.Services.AddDbContext<ContactContext>(options => options.UseInMemoryDatabase("ContactList"));
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Configure CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Apply CORS policy
+app.UseCors("AllowAllOrigins");
+
+// Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
-var summaries = new[]
+// Seed the database with initial data
+using (var scope = app.Services.CreateScope())
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<ContactContext>();
+    context.Database.EnsureCreated();
+    SeedData(context);
+}
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+// app.UseHttpsRedirection(); // Ensures all HTTP requests are redirected to HTTPS
+
+app.UseAuthorization();
+
+app.MapControllers();
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+void SeedData(ContactContext context)
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    context.Contacts.AddRange(
+        new Contact 
+        { 
+            Id = 1, 
+            FirstName = "John", 
+            LastName = "Doe", 
+            Email = "john.doe@example.com", 
+            Street = "123 Main St", 
+            City = "Springfield", 
+            State = "IL", 
+            Zip = "62704", 
+            ContactFrequency = "OK to contact with marketing information", 
+            PhoneNumber = "555-1234" 
+        }
+        // Add more seed data here...
+    );
+    context.SaveChanges();
 }

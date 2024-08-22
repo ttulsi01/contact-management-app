@@ -1,0 +1,245 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container for forms and lists */
+.container, .contact-list-container {
+    width: 90%;
+    max-width: 900px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling */
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Button styling */
+button, .add-contact-link {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1em;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+button:hover, .add-contact-link:hover {
+    background-color: #218838;
+}
+
+.add-contact-link {
+    text-align: center;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+.edit-link, .delete-button {
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.edit-link {
+    background-color: #007bff;
+    margin-right: 5px;
+}
+
+.edit-link:hover {
+    background-color: #0056b3;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+/* Form styling */
+form {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="email"], select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, select:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.char-counter {
+    display: block;
+    font-size: 0.85em;
+    color: #666;
+    text-align: right;
+    margin-top: 5px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    background-color: #28a745;
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Error message styling */
+.error {
+    color: red;
+    font-size: 0.85em;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Large devices (desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .container, .contact-list-container {
+    max-width: 1100px;
+    }
+
+    form {
+    max-width: 700px;
+    }
+}
+
+/* Medium devices (tablets, 768px to 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .container, .contact-list-container {
+    max-width: 850px;
+    }
+
+    form {
+    max-width: 600px;
+    }
+
+    body {
+    padding: 20px;
+    height: auto;
+    }
+}
+
+/* Small devices (phones, less than 768px) */
+@media (max-width: 767px) {
+    .container, .contact-list-container {
+    width: 95%;
+    margin: 10px auto;
+    padding: 15px;
+    }
+
+    form {
+    width: 100%;
+    padding: 15px;
+    }
+
+    input[type="text"], input[type="email"], select {
+    padding: 8px;
+    font-size: 0.9em;
+    }
+
+    button[type="submit"] {
+    padding: 12px;
+    font-size: 1.1em;
+    }
+
+    body {
+    padding: 15px;
+    height: auto;
+    }
+}
+
+/* Extra small devices (phones in portrait mode, less than 480px) */
+@media (max-width: 480px) {
+    input[type="text"], input[type="email"], select {
+    padding: 6px;
+    font-size: 0.85em;
+    }
+
+    button[type="submit"] {
+    padding: 10px;
+    font-size: 1em;
+    }
+
+    .char-counter {
+    font-size: 0.75em;
+    }
+}
