@@ -1,89 +1,109 @@
-/* General styling */
+/* General styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
     margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-/* Container for forms and lists */
-.container, .contact-list-container {
-    width: 90%;
-    max-width: 900px;
-    margin: 20px auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    color: #333;
 }
 
 /* Header styling */
-h1 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center;
-}
-
-/* Button styling */
-button, .add-contact-link {
-    background-color: #28a745;
+.app-header {
+    display: flex;
+    align-items: center;
+    background-color: #343a40;
     color: white;
     padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 1em;
-    cursor: pointer;
-    display: inline-block;
-    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-button:hover, .add-contact-link:hover {
-    background-color: #218838;
+.app-header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.app-header h1, 
+.contact-list-container h1, 
+.form-container h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
+
+/* Footer styling */
+.app-footer {
+    text-align: center;
+    padding: 20px 0px;
+    background-color: #343a40;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    margin-top: 40px;
+}
+
+/* Contact List */
+.contact-list-container {
+    padding: 30px;
+    max-width: 800px;
+    margin: 30px auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .add-contact-link {
-    text-align: center;
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-/* Table styling */
-table {
+.add-contact-link:hover {
+    background-color: #218838;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.contact-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
 
-th, td {
+.contact-table th,
+.contact-table td {
     padding: 12px;
-    border: 1px solid #ddd;
     text-align: left;
+    border-bottom: 1px solid #dee2e6;
 }
 
-th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-}
-
-td {
-    background-color: #f9f9f9;
-}
-
-.edit-link, .delete-button {
+.contact-table th {
+    background-color: #343a40;
     color: white;
+}
+
+.edit-link,
+.delete-button {
     padding: 5px 10px;
-    text-decoration: none;
+    color: white;
     border-radius: 4px;
+    margin-right: 5px;
+    text-decoration: none;
+}
+
+.contact-table tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .edit-link {
     background-color: #007bff;
-    margin-right: 5px;
 }
 
 .edit-link:hover {
@@ -93,153 +113,127 @@ td {
 .delete-button {
     background-color: #dc3545;
     border: none;
-    cursor: pointer;
 }
 
 .delete-button:hover {
     background-color: #c82333;
 }
 
-/* Form styling */
-form {
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
+.add-contact-link:hover,
+.edit-link:hover,
+.delete-button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
 }
 
-form div {
+/* Contact Form */
+.form-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form-group {
+    flex: 1 1 100%;
     margin-bottom: 15px;
 }
 
-label {
-    display: block;
+.form-group label {
     font-weight: bold;
+    display: block;
     margin-bottom: 5px;
 }
 
-input[type="text"], input[type="email"], select {
+.form-group input,
+.form-group select {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #ced4da;
     border-radius: 4px;
-    font-size: 1em;
     box-sizing: border-box;
-}
-
-input[type="text"]:focus, input[type="email"]:focus, select:focus {
-    border-color: #80bdff;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 .char-counter {
     display: block;
-    font-size: 0.85em;
-    color: #666;
     text-align: right;
-    margin-top: 5px;
+    font-size: 0.85em;
+    color: #6c757d;
 }
 
-button[type="submit"] {
+.submit-button {
     width: 100%;
-    background-color: #28a745;
     padding: 10px;
-    font-size: 1em;
+    background-color: #28a745;
+    color: white;
     border: none;
     border-radius: 4px;
-    color: white;
+    font-size: 16px;
     cursor: pointer;
 }
 
-button[type="submit"]:hover {
+.submit-button:hover {
     background-color: #218838;
 }
 
-/* Error message styling */
 .error {
-    color: red;
-    font-size: 0.85em;
+    color: #dc3545;
+    font-size: 0.875em;
     margin-top: 5px;
-    display: block;
 }
 
-/* Media Queries for Responsiveness */
-
-/* Large devices (desktops, 1200px and up) */
-@media (min-width: 1200px) {
-    .container, .contact-list-container {
-    max-width: 1100px;
+/* Responsive design */
+@media (max-width: 768px) {
+    .app-header h1 {
+        font-size: 20px;
     }
 
-    form {
-    max-width: 700px;
-    }
-}
-
-/* Medium devices (tablets, 768px to 1199px) */
-@media (min-width: 768px) and (max-width: 1199px) {
-    .container, .contact-list-container {
-    max-width: 850px;
+    .form-container,
+    .contact-list-container {
+        padding: 10px;
     }
 
-    form {
-    max-width: 600px;
+    .form-group input,
+    .form-group select {
+        padding: 8px;
     }
 
-    body {
-    padding: 20px;
-    height: auto;
-    }
-}
-
-/* Small devices (phones, less than 768px) */
-@media (max-width: 767px) {
-    .container, .contact-list-container {
-    width: 95%;
-    margin: 10px auto;
-    padding: 15px;
+    /* Responsive table design */
+    .contact-table,
+    .contact-table th,
+    .contact-table td {
+        display: block;
+        width: 100%;
     }
 
-    form {
-    width: 100%;
-    padding: 15px;
+    .contact-table thead {
+        display: none;
     }
 
-    input[type="text"], input[type="email"], select {
-    padding: 8px;
-    font-size: 0.9em;
+    .contact-table tr {
+        margin-bottom: 15px;
     }
 
-    button[type="submit"] {
-    padding: 12px;
-    font-size: 1.1em;
+    .contact-table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
     }
 
-    body {
-    padding: 15px;
-    height: auto;
-    }
-}
-
-/* Extra small devices (phones in portrait mode, less than 480px) */
-@media (max-width: 480px) {
-    input[type="text"], input[type="email"], select {
-    padding: 6px;
-    font-size: 0.85em;
-    }
-
-    button[type="submit"] {
-    padding: 10px;
-    font-size: 1em;
-    }
-
-    .char-counter {
-    font-size: 0.75em;
+    .contact-table td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        font-weight: bold;
+        text-align: left;
     }
 }
