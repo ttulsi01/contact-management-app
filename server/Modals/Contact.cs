@@ -1,3 +1,5 @@
+// server/Modals/Contact.cs
+
 using System.ComponentModel.DataAnnotations;
 
 namespace ContactManagerApi.Models

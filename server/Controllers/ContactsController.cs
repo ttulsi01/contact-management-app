@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using ContactManagerApi.Models;
 using ContactManagerApi.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -66,5 +67,31 @@ public class ContactsController : ControllerBase
         _context.SaveChanges();
 
         return NoContent();
+    }
+
+    // New endpoint to get dropdown options for states and contact frequency
+    [HttpGet("dropdown-options")]
+    public IActionResult GetDropdownOptions()
+    {
+        var states = new List<KeyValuePair<string, string>>
+        {
+            new KeyValuePair<string, string>("AL", "Alabama"),
+            new KeyValuePair<string, string>("AK", "Alaska"),
+            // Add other states here...
+            new KeyValuePair<string, string>("WY", "Wyoming")
+        };
+
+        var contactFrequencies = new List<KeyValuePair<string, string>>
+        {
+            new KeyValuePair<string, string>("AccountInfo", "Contact only about account information"),
+            new KeyValuePair<string, string>("MarketingInfo", "OK to contact with marketing information"),
+            new KeyValuePair<string, string>("ThirdPartyMarketingInfo", "OK to contact with third-party marketing information")
+        };
+
+        return Ok(new
+        {
+            States = states,
+            ContactFrequencies = contactFrequencies
+        });
     }
 }

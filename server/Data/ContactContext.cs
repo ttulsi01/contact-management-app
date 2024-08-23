@@ -1,3 +1,5 @@
+// server/Data/ContactContext.cs
+
 using Microsoft.EntityFrameworkCore;
 using ContactManagerApi.Models;
 
