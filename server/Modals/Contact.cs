@@ -3,7 +3,8 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace ContactManagerApi.Models
-{
+{   
+    // Define a Contact model class to represent contact information
     public class Contact
     {
         public int Id {get; set; }

@@ -6,7 +6,7 @@ body {
     color: #333;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensure the body takes up at least 100vh */
+    min-height: 100vh; 
 }
 
 /* App Container */
@@ -14,23 +14,23 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensure the app container takes up at least 100vh */
-    justify-content: space-between; /* Space out header, content, and footer */
+    min-height: 100vh; 
+    justify-content: space-between; 
 }
 
 /* Header styling */
 .app-header {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Space between title and logo */
-    background-color: #495057; /* Lighter background for better contrast */
+    justify-content: space-between; 
+    background-color: #495057; 
     color: white;
-    padding: 20px; /* Increased padding */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Deeper shadow */
+    padding: 20px; 
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); 
 }
 
 .app-header h1 {
-    font-size: 28px; /* Slightly larger font */
+    font-size: 28px; 
     margin: 0;
 }
 
@@ -49,7 +49,7 @@ body {
     color: white;
     padding: 20px;
     text-align: center;
-    margin-top: auto; /* Ensure the footer is pushed to the bottom */
+    margin-top: auto; 
 }
 
 /* Contact List */
@@ -65,11 +65,11 @@ body {
 
 /* Content Area */
 main {
-    flex: 1; /* Take up remaining space between header and footer */
-    padding: 20px; /* Add some padding */
+    flex: 1; 
+    padding: 20px; 
     display: flex;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
+    justify-content: center; 
+    align-items: center; 
 }
 
 /* Add New Contact Link */
@@ -102,7 +102,7 @@ main {
 
 .contact-table th,
 .contact-table td {
-    padding: 15px; /* Increased padding for better readability */
+    padding: 15px; 
     text-align: left;
     border-bottom: 1px solid #dee2e6;
 }
@@ -151,17 +151,17 @@ main {
 
 /* Contact Form */
 .form-container {
-    max-width: 600px; /* Adjusted for a wider form */
-    width: 100%; /* Ensure it uses the available width */
-    margin: 40px auto; /* Centered with increased margin */
-    padding: 30px 40px 60px; /* Adjusted padding to match the wider form */
+    max-width: 600px; 
+    width: 100%; 
+    margin: 40px auto; 
+    padding: 30px 40px 60px; 
     background: #f8f9fa;
-    border-radius: 10px; /* Softer corners */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Deeper shadow */
+    border-radius: 10px; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); 
 }
 
 .form-group {
-    margin-bottom: 20px; /* Increased spacing between fields */
+    margin-bottom: 20px; 
 }
 
 .form-group label {
@@ -189,14 +189,14 @@ main {
 /* Submit Button */
 .submit-button {
     width: 100%;
-    padding: 15px; /* Larger buttons */
+    padding: 15px; 
     background-color: #28a745;
     color: white;
     border: none;
-    border-radius: 5px; /* Softer corners */
-    font-size: 18px; /* Larger font */
+    border-radius: 5px; 
+    font-size: 18px; 
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Smooth transition */
+    transition: background-color 0.3s ease; 
 }
 
 .submit-button:hover {

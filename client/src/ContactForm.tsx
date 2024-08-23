@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+// Define interface for Contact object
 interface Contact {
     id?: number;
     firstName: string;
@@ -22,9 +23,10 @@ interface DropdownOptions {
 }
 
 const ContactForm: React.FC = () => {
-    const { id } = useParams<{ id: string }>();
-    const navigate = useNavigate();
+    const { id } = useParams<{ id: string }>(); // Get the contact ID from URL params (if any)
+    const navigate = useNavigate(); // Navigation hook for redirecting after form submission
 
+    // State to hold contact details
     const [contact, setContact] = useState<Contact>({
         firstName: '',
         lastName: '',
@@ -65,11 +67,13 @@ const ContactForm: React.FC = () => {
         }
     }, [id]);
 
+    // Handle form input changes
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setContact(prev => ({ ...prev, [name]: value }));
     };
 
+    // Handle phone number input formatting
     const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         let value = e.target.value;
         value = value.replace(/\D/g, ''); // Remove all non-digits
@@ -86,6 +90,7 @@ const ContactForm: React.FC = () => {
         setContact(prev => ({ ...prev, phoneNumber: value }));
     };
 
+    // Validate form fields
     const validateForm = () => {
         let formIsValid = true;
         let errors: { [key: string]: string } = {};
@@ -115,6 +120,7 @@ const ContactForm: React.FC = () => {
         return formIsValid;
     };
 
+    // Validate that all fields are filled out
     const validateAllFields = () => {
         let isValid = true;
         Object.keys(contact).forEach(key => {
@@ -126,6 +132,7 @@ const ContactForm: React.FC = () => {
         return isValid;
     };
 
+    // Handle form submission
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -133,6 +140,7 @@ const ContactForm: React.FC = () => {
             return;
         }
 
+        // If an ID exists, update the contact, otherwise create a new contact
         if (id) {
             axios.put(`http://localhost:5281/api/contacts/${id}`, contact)
                 .then(() => {
@@ -156,6 +164,7 @@ const ContactForm: React.FC = () => {
         }
     };
 
+    // Render the form
     return (
         <div className="form-container">
             <h2>{id ? "Edit Contact" : "Create Contact"}</h2>

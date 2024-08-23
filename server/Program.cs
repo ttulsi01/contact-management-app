@@ -6,12 +6,14 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
+
+// Configure the application to use an in-memory database for storing contacts
 builder.Services.AddDbContext<ContactContext>(options => options.UseInMemoryDatabase("ContactList"));
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configure CORS policy
+// Configure CORS policy to allow all origins, methods, and headers
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",
@@ -52,6 +54,7 @@ app.MapControllers();
 
 app.Run();
 
+// Method to seed the database with initial data
 void SeedData(ContactContext context)
 {
     context.Contacts.AddRange(

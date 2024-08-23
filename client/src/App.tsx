@@ -4,8 +4,10 @@ import ContactList from './ContactList';
 import ContactForm from './ContactForm';
 import './styles.css';
 
+// Main App component that sets up the routing and basic structure of the application
 const App: React.FC = () => {
     return (
+        // Router component to handle client-side routing
         <Router basename="/contact-management-app">
             <div className="app-container">
                 <header className="app-header">

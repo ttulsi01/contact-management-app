@@ -6,32 +6,37 @@ using System.Collections.Generic;
 
 [Route("api/[controller]")]
 [ApiController]
+// Controller for managing contacts in the system
 public class ContactsController : ControllerBase
 {
     private readonly ContactContext _context;
 
+    // Constructor to inject the database context
     public ContactsController(ContactContext context)
     {
         _context = context;
     }
-
+    // GET: api/contacts
+    // Retrieves all contacts from the database
     [HttpGet]
     public ActionResult<IEnumerable<Contact>> GetContacts()
     {
         return _context.Contacts.ToList();
     }
 
+    // Retrieves a specific contact by its ID
     [HttpGet("{id}")]
     public ActionResult<Contact> GetContact(int id)
     {
         var contact = _context.Contacts.Find(id);
         if (contact == null)
         {
-            return NotFound();
+            return NotFound(); // Returns 404 if contact not found
         }
         return contact;
     }
 
+    // Adds a new contact to the database
     [HttpPost]
     public ActionResult<Contact> PostContact(Contact contact)
     {
@@ -40,6 +45,7 @@ public class ContactsController : ControllerBase
         return CreatedAtAction(nameof(GetContact), new { id = contact.Id }, contact);
     }
 
+    /// Updates an existing contact in the databas
     [HttpPut("{id}")]
     public IActionResult PutContact(int id, Contact contact)
     {
@@ -54,6 +60,7 @@ public class ContactsController : ControllerBase
         return NoContent();
     }
 
+    // Deletes a contact from the database by its ID
     [HttpDelete("{id}")]
     public IActionResult DeleteContact(int id)
     {
